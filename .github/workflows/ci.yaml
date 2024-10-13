@@ -1,6 +1,10 @@
 name: linting
 
-on: push
+on:
+   push:
+    branches:
+      - master
+   pull_request:
 
 jobs:
   linting:
@@ -8,6 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]  # Add spaces after the colon
+        version" ['3.9', '3.10']
 
     steps:
       - name: Checkout Code
@@ -16,7 +21,7 @@ jobs:
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: ${{ matrix.version }}
 
       - name: Install flake8
         run: |
