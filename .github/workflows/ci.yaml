@@ -4,10 +4,10 @@ on: push
 
 jobs:
   linting:
-    runs-on: ${{matrix.os}}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:[ubuntu-latest,macos-latest]
+        os: [ubuntu-latest, macos-latest]  # Add spaces after the colon
 
     steps:
       - name: Checkout Code
@@ -26,3 +26,4 @@ jobs:
       - name: Run flake8
         run: |
           flake8 app.py --count --max-line-length=88 --statistics
+
